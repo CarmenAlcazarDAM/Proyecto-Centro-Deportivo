@@ -1,5 +1,3 @@
-package app;
-
 import controller.CentroDeportivoController;
 import model.CentroDeportivo;
 import view.VistaConsola;
