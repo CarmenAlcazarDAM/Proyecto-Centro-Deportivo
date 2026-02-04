@@ -1,12 +1,20 @@
 package model;
 
 public class CentroDeportivo {
+    final int MAXIMO_SOCIOS = 100;
+    final int MAXIMO_ACTIVIDADES = 20;
+
 
     private Socio[] socios;
     private Actividad[] actividades;
-    private int numSocios;
-    private int numActividades;
 
+
+
+    public CentroDeportivo() {
+        this.socios = new Socio[MAXIMO_SOCIOS];
+        this.actividades = new Actividad[MAXIMO_ACTIVIDADES];
+
+    }
 
     public Socio[] getSocios() {
         return socios;
@@ -22,21 +30,5 @@ public class CentroDeportivo {
 
     public void setActividades(Actividad[] actividades) {
         this.actividades = actividades;
-    }
-
-    public int getNumSocios() {
-        return numSocios;
-    }
-
-    public void setNumSocios(int numSocios) {
-        this.numSocios = numSocios;
-    }
-
-    public int getNumActividades() {
-        return numActividades;
-    }
-
-    public void setNumActividades(int numActividades) {
-        this.numActividades = numActividades;
     }
 }

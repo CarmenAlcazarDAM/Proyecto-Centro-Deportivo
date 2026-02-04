@@ -56,4 +56,12 @@ public class Actividad {
     public void setSociosInscritos(Socio[] sociosInscritos) {
         this.sociosInscritos = sociosInscritos;
     }
+
+    public String ToString(){
+        return "\nNombre: " + nombre
+                +"\nId: " + idActividad
+                + "\nDuración: " + duracionMinutos
+                +"\nNivel: " + nivel
+                +"\nPrecio mensual: " + precioMensual + "€";
+    }
 }

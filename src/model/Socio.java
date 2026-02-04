@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Socio {
 
     final int CUOTAS = 12;
@@ -78,4 +80,13 @@ public class Socio {
     public void setCuotasPagadas(boolean[] cuotasPagadas) {
         this.cuotasPagadas = cuotasPagadas;
     }
+
+    public String ToString(){
+        return "\nSocio: " + nombre
+                +"\nDNI: " + dni
+                + "\nEdad: " + edad
+                + "\nId: "+ idSocio
+                + "\n Actividades inscritas: " + Arrays.toString(actividadesInscritas);
+    }
+    //Arrays.toString() --> es un método de java que imprime directamente los valores que contiene el array
 }
