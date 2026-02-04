@@ -9,8 +9,9 @@ eliminarActividad(idActividad)
  */
 
 
-
-
+import model.CentroDeportivo;
 
 public class ControlarActividad {
+    public ControlarActividad(CentroDeportivo miCentro) {
+    }
 }
