@@ -1,16 +1,24 @@
-import controller.ControlarActividad;
-import controller.ControlarSocio;
+package app;
+
+import controller.CentroDeportivoController;
 import model.CentroDeportivo;
+import view.VistaConsola;
 
 public class Main {
+    public static void main(String[] args) {
 
-    public static  void main(String[] args){
+        // Capa MODELO
+        // creamos un centro deportivo (centro1) de 20 actividades y 20 socios
+        CentroDeportivo centro1 = new CentroDeportivo(20, 50);
 
-        //Creamos el centro deportivo
-        CentroDeportivo miCentro = new CentroDeportivo();
+        // Capa CONTROLADOR
+        //creamos el controlador para
+        CentroDeportivoController controladorCentro1 = new CentroDeportivoController(centro1);
 
-        //Creamos los controladores --> le pasamos <miCentro>
-        ControlarSocio controlSocio = new ControlarSocio(miCentro);
-        ControlarActividad controlActividad = new ControlarActividad(miCentro);
+        // Capa VISTA
+        VistaConsola vista = new VistaConsola(controladorCentro1);
+
+        // Lanzamos bucle principal
+        vista.iniciar();
     }
 }
