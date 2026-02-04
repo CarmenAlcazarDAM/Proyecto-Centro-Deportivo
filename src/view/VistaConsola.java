@@ -3,7 +3,8 @@ package view;
 import controller.CentroDeportivoController;
 import model.Actividad;
 import model.Socio;
-import util.InputUtils;
+import utils.InputUtils;
+import utils.InputUtils;
 
 public class VistaConsola {
 
@@ -17,7 +18,7 @@ public class VistaConsola {
         int opcion;
         do {
             mostrarMenuPrincipal();
-            opcion = InputUtils.leeEntero("Elige una opción: ");
+            opcion = utils.InputUtils.leeEntero("Elige una opción: ");
             System.out.println();
             switch (opcion) {
                 case 1 -> menuSocios();
@@ -54,7 +55,7 @@ public class VistaConsola {
             System.out.println("4. Buscar socio por DNI");
             System.out.println("5. Eliminar socio");
             System.out.println("0. Volver");
-            opcion = InputUtils.leeEntero("Opción: ");
+            opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
                 case 1 -> altaSocio();
@@ -70,9 +71,9 @@ public class VistaConsola {
     }
 
     private void altaSocio() {
-        String nombre = InputUtils.leerCadenaNoVacia("Nombre: ");
-        String dni = InputUtils.leerCadenaNoVacia("DNI: ");
-        int edad = InputUtils.leeEntero("Edad: ");
+        String nombre = utils.InputUtils.leerCadenaNoVacia("Nombre: ");
+        String dni = utils.InputUtils.leerCadenaNoVacia("DNI: ");
+        int edad = utils.InputUtils.leeEntero("Edad: ");
 
         boolean ok = controlador.registrarSocio(nombre, dni, edad);
         if (ok) {
@@ -97,7 +98,7 @@ public class VistaConsola {
     }
 
     private void buscarSocioPorId() {
-        int id = InputUtils.leeEntero("ID socio: ");
+        int id = utils.InputUtils.leeEntero("ID socio: ");
         Socio socio = controlador.buscarSocioPorId(id);
         if (socio == null) {
             System.out.println("No existe socio con ese ID.");
@@ -107,7 +108,7 @@ public class VistaConsola {
     }
 
     private void buscarSocioPorDni() {
-        String dni = InputUtils.leerCadenaNoVacia("DNI del socio: ");
+        String dni = utils.InputUtils.leerCadenaNoVacia("DNI del socio: ");
         Socio socio = controlador.buscarSocioPorDni(dni);
         if (socio == null) {
             System.out.println("No existe socio con ese DNI.");
@@ -117,7 +118,7 @@ public class VistaConsola {
     }
 
     private void eliminarSocio() {
-        int id = InputUtils.leeEntero("ID del socio a eliminar: ");
+        int id = utils.InputUtils.leeEntero("ID del socio a eliminar: ");
         boolean ok = controlador.eliminarSocio(id);
         if (ok) {
             System.out.println("✅ Socio eliminado (y desinscrito de todas las actividades).");
@@ -138,7 +139,7 @@ public class VistaConsola {
             System.out.println("4. Buscar actividad por nombre");
             System.out.println("5. Eliminar actividad");
             System.out.println("0. Volver");
-            opcion = InputUtils.leeEntero("Opción: ");
+            opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
                 case 1 -> altaActividad();
@@ -154,11 +155,11 @@ public class VistaConsola {
     }
 
     private void altaActividad() {
-        String nombre = InputUtils.leerCadenaNoVacia("Nombre actividad: ");
-        int duracion = InputUtils.leeEntero("Duración en minutos: ");
-        String nivel = InputUtils.leerCadenaNoVacia("Nivel (iniciación, intermedio, avanzado): ");
-        double precio = InputUtils.leeDouble("Precio mensual: ");
-        int numMiembros = InputUtils.leeEntero("Número máximo de socios: ");
+        String nombre = utils.InputUtils.leerCadenaNoVacia("Nombre actividad: ");
+        int duracion = utils.InputUtils.leeEntero("Duración en minutos: ");
+        String nivel = utils.InputUtils.leerCadenaNoVacia("Nivel (iniciación, intermedio, avanzado): ");
+        double precio = utils.InputUtils.leeDouble("Precio mensual: ");
+        int numMiembros = utils.InputUtils.leeEntero("Número máximo de socios: ");
 
         boolean ok = controlador.registrarActividad(nombre, duracion, nivel, precio, numMiembros);
         if (ok) {
@@ -183,7 +184,7 @@ public class VistaConsola {
     }
 
     private void buscarActividadPorId() {
-        int id = InputUtils.leeEntero("ID actividad: ");
+        int id = utils.InputUtils.leeEntero("ID actividad: ");
         Actividad a = controlador.buscarActividadPorId(id);
         if (a == null) {
             System.out.println("No existe actividad con ese ID.");
@@ -193,7 +194,7 @@ public class VistaConsola {
     }
 
     private void buscarActividadPorNombre() {
-        String nombre = InputUtils.leerCadenaNoVacia("Nombre actividad: ");
+        String nombre = utils.InputUtils.leerCadenaNoVacia("Nombre actividad: ");
         Actividad a = controlador.buscarActividadPorNombre(nombre);
         if (a == null) {
             System.out.println("No existe actividad con ese nombre.");
@@ -203,7 +204,7 @@ public class VistaConsola {
     }
 
     private void eliminarActividad() {
-        int id = InputUtils.leeEntero("ID de la actividad a eliminar: ");
+        int id = utils.InputUtils.leeEntero("ID de la actividad a eliminar: ");
         boolean ok = controlador.eliminarActividad(id);
         if (ok) {
             System.out.println("✅ Actividad eliminada y socios actualizados.");
@@ -223,7 +224,7 @@ public class VistaConsola {
             System.out.println("3. Ver actividades de un socio");
             System.out.println("4. Ver socios de una actividad");
             System.out.println("0. Volver");
-            opcion = InputUtils.leeEntero("Opción: ");
+            opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
                 case 1 -> inscribirSocioEnActividad();
@@ -238,8 +239,8 @@ public class VistaConsola {
     }
 
     private void inscribirSocioEnActividad() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
-        int idActividad = InputUtils.leeEntero("ID actividad: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
+        int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
         boolean ok = controlador.inscribirSocioEnActividad(idSocio, idActividad);
         if (ok) {
             System.out.println("✅ Inscripción realizada correctamente.");
@@ -249,8 +250,8 @@ public class VistaConsola {
     }
 
     private void bajaSocioDeActividad() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
-        int idActividad = InputUtils.leeEntero("ID actividad: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
+        int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
         boolean ok = controlador.darDeBajaSocioDeActividad(idSocio, idActividad);
         if (ok) {
             System.out.println("✅ Baja realizada correctamente.");
@@ -260,7 +261,7 @@ public class VistaConsola {
     }
 
     private void verActividadesDeSocio() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         Actividad[] actividades = controlador.obtenerActividadesDeSocio(idSocio);
         if (actividades == null) {
             System.out.println("Socio no encontrado.");
@@ -280,7 +281,7 @@ public class VistaConsola {
     }
 
     private void verSociosDeActividad() {
-        int idActividad = InputUtils.leeEntero("ID actividad: ");
+        int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
         Socio[] socios = controlador.obtenerSociosDeActividad(idActividad);
         if (socios == null) {
             System.out.println("Actividad no encontrada.");
@@ -314,7 +315,7 @@ public class VistaConsola {
             System.out.println("7. Listar meses pendientes");
             System.out.println("8. Listar meses pagados");
             System.out.println("0. Volver");
-            opcion = InputUtils.leeEntero("Opción: ");
+            opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
                 case 1 -> verCuotaMes();
@@ -333,15 +334,15 @@ public class VistaConsola {
     }
 
     private void verCuotaMes() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
-        int mes = InputUtils.leeEntero("Mes (1-12): ", 1, 12);
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
+        int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
         double cuota = controlador.calcularCuotaMensualSocio(idSocio, mes);
         System.out.println("Cuota del socio " + idSocio + " en el mes " + mes + " = " + cuota + " €");
     }
 
     private void marcarMes(boolean pagado) {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
-        int mes = InputUtils.leeEntero("Mes (1-12): ", 1, 12);
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
+        int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
         boolean ok = pagado ? controlador.marcarCuotaPagada(idSocio, mes)
                 : controlador.marcarCuotaPendiente(idSocio, mes);
         if (ok) {
@@ -352,26 +353,26 @@ public class VistaConsola {
     }
 
     private void verTotalPagado() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         double total = controlador.obtenerTotalPagadoAnual(idSocio);
         System.out.println("Total pagado en el año por el socio " + idSocio + " = " + total + " €");
     }
 
     private void verTotalPendiente() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         double total = controlador.obtenerTotalPendienteAnual(idSocio);
         System.out.println("Total pendiente en el año por el socio " + idSocio + " = " + total + " €");
     }
 
     private void verEstadoMes() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
-        int mes = InputUtils.leeEntero("Mes (1-12): ", 1, 12);
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
+        int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
         String estado = controlador.obtenerEstadoPagoMes(idSocio, mes);
         System.out.println("Estado del mes " + mes + ": " + estado);
     }
 
     private void listarMesesPendientes() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int[] meses = controlador.obtenerMesesPendientes(idSocio);
         if (meses == null || meses.length == 0) {
             System.out.println("No hay meses pendientes o socio no encontrado.");
@@ -385,7 +386,7 @@ public class VistaConsola {
     }
 
     private void listarMesesPagados() {
-        int idSocio = InputUtils.leeEntero("ID socio: ");
+        int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int[] meses = controlador.obtenerMesesPagados(idSocio);
         if (meses == null || meses.length == 0) {
             System.out.println("No hay meses pagados o socio no encontrado.");
