@@ -45,12 +45,12 @@ public class VistaConsola {
         System.out.println("\u001B[0m");
 
         System.out.println("\u001B[33m");
-        System.out.println("\n1. Gestión de socios");
-        System.out.println("\n2. Gestión de actividades");
-        System.out.println("\n3. Inscripciones");
-        System.out.println("\n4. Cuotas");
-        System.out.println("\n5. Informes");
-        System.out.println("\n0. Salir");
+        System.out.println("1. Gestión de socios");
+        System.out.println("2. Gestión de actividades");
+        System.out.println("3. Inscripciones");
+        System.out.println("4. Cuotas");
+        System.out.println("5. Informes");
+        System.out.println("0. Salir");
         System.out.println("\u001B[0m");
     }
 
