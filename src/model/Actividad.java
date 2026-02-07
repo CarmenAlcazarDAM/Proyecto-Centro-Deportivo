@@ -70,14 +70,14 @@ public class Actividad {
 
     @Override
     public String toString() {
-        return "Actividad{" +
-                "idActividad=" + idActividad +
-                ", nombre='" + nombre + '\'' +
-                ", duracionMinutos=" + duracionMinutos +
-                ", nivel='" + nivel + '\'' +
-                ", precioMensual=" + precioMensual +
-                ", numMiembros=" + numMiembros +
-                '}';
+        return "Actividad: " + nombre +
+                "ID: " + idActividad +
+                "Duración: " + duracionMinutos + " min " +
+                "Nivel: " + nivel +
+                "Precio mensual: " + precioMensual +
+                "Numero miembros: " + numMiembros +
+                "\n";
+
     }
 
     @Override
