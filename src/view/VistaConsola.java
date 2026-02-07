@@ -38,13 +38,20 @@ public class VistaConsola {
     }
 
     private void mostrarMenuPrincipal() {
-        System.out.println("===== CENTRO DEPORTIVO =====");
-        System.out.println("1. Gestión de socios");
-        System.out.println("2. Gestión de actividades");
-        System.out.println("3. Inscripciones");
-        System.out.println("4. Cuotas");
-        System.out.println("5. Informes");
-        System.out.println("0. Salir");
+        System.out.println("\u001B[34m");
+        System.out.println("=============================");
+        System.out.println("      CENTRO DEPORTIVO       ");
+        System.out.println("=============================");
+        System.out.println("\u001B[0m");
+
+        System.out.println("\u001B[33m");
+        System.out.println("\n1. Gestión de socios");
+        System.out.println("\n2. Gestión de actividades");
+        System.out.println("\n3. Inscripciones");
+        System.out.println("\n4. Cuotas");
+        System.out.println("\n5. Informes");
+        System.out.println("\n0. Salir");
+        System.out.println("\u001B[0m");
     }
 
     // --------- SOCIOS ---------
@@ -52,6 +59,8 @@ public class VistaConsola {
     private void menuSocios() {
         int opcion;
         do {
+
+            System.out.println("\u001B[33m");
             System.out.println("----- Gestión de socios -----");
             System.out.println("1. Alta socio");
             System.out.println("2. Listar socios");
@@ -59,6 +68,7 @@ public class VistaConsola {
             System.out.println("4. Buscar socio por DNI");
             System.out.println("5. Eliminar socio");
             System.out.println("0. Volver");
+            System.out.println("\u001B[0m");
             opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
@@ -137,6 +147,8 @@ public class VistaConsola {
     private void menuActividades() {
         int opcion;
         do {
+
+            System.out.println("\u001B[33m");
             System.out.println("----- Gestión de actividades -----");
             System.out.println("1. Alta actividad");
             System.out.println("2. Listar actividades");
@@ -144,6 +156,7 @@ public class VistaConsola {
             System.out.println("4. Buscar actividad por nombre");
             System.out.println("5. Eliminar actividad");
             System.out.println("0. Volver");
+            System.out.println("\u001B[0m");
             opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
@@ -224,12 +237,15 @@ public class VistaConsola {
     private void menuInscripciones() {
         int opcion;
         do {
+
+            System.out.println("\u001B[33m");
             System.out.println("----- Inscripciones -----");
             System.out.println("1. Inscribir socio en actividad");
             System.out.println("2. Dar de baja socio de actividad");
             System.out.println("3. Ver actividades de un socio");
             System.out.println("4. Ver socios de una actividad");
             System.out.println("0. Volver");
+            System.out.println("\u001B[0m");
             opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
@@ -312,6 +328,8 @@ public class VistaConsola {
     private void menuCuotas() {
         int opcion;
         do {
+
+            System.out.println("\u001B[33m");
             System.out.println("----- Cuotas -----");
             System.out.println("1. Ver cuota de un mes");
             System.out.println("2. Marcar mes como pagado");
@@ -322,6 +340,7 @@ public class VistaConsola {
             System.out.println("7. Listar meses pendientes");
             System.out.println("8. Listar meses pagados");
             System.out.println("0. Volver");
+            System.out.println("\u001B[0m");
             opcion = utils.InputUtils.leeEntero("Opción: ");
 
             switch (opcion) {
