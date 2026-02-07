@@ -1,6 +1,8 @@
 package view;
 
 import controller.CentroDeportivoController;
+import controller.ControlarActividad;
+import controller.ControlarSocio;
 import model.Actividad;
 import model.Socio;
 import utils.InputUtils;
@@ -8,10 +10,12 @@ import utils.InputUtils;
 
 public class VistaConsola {
 
-    private CentroDeportivoController controlador;
+    private ControlarSocio controladorSocio;
+    private ControlarActividad controladorActividad;
 
-    public VistaConsola(CentroDeportivoController controlador) {
-        this.controlador = controlador;
+    public VistaConsola(ControlarSocio controladorSocio, ControlarActividad controladorActividad) {
+        this.controladorSocio = controladorSocio;
+        this.controladorActividad = controladorActividad;
     }
 
     public void iniciar() {
@@ -63,7 +67,8 @@ public class VistaConsola {
                 case 3 -> buscarSocioPorId();
                 case 4 -> buscarSocioPorDni();
                 case 5 -> eliminarSocio();
-                case 0 -> { }
+                case 0 -> {
+                }
                 default -> System.out.println("Opción no válida.");
             }
             System.out.println();
@@ -75,7 +80,7 @@ public class VistaConsola {
         String dni = utils.InputUtils.leerCadenaNoVacia("DNI: ");
         int edad = utils.InputUtils.leeEntero("Edad: ");
 
-        boolean ok = controlador.registrarSocio(nombre, dni, edad);
+        boolean ok = controladorSocio.registrarSocio(nombre, dni, edad);
         if (ok) {
             System.out.println("✅ Socio registrado correctamente.");
         } else {
@@ -84,7 +89,7 @@ public class VistaConsola {
     }
 
     private void listarSocios() {
-        Socio[] socios = controlador.listarSocios();
+        Socio[] socios = controladorSocio.listarSocios();
         if (socios == null) {
             System.out.println("No hay socios registrados.");
             return;
@@ -99,7 +104,7 @@ public class VistaConsola {
 
     private void buscarSocioPorId() {
         int id = utils.InputUtils.leeEntero("ID socio: ");
-        Socio socio = controlador.buscarSocioPorId(id);
+        Socio socio = controladorSocio.buscarSocioPorId(id);
         if (socio == null) {
             System.out.println("No existe socio con ese ID.");
         } else {
@@ -109,7 +114,7 @@ public class VistaConsola {
 
     private void buscarSocioPorDni() {
         String dni = utils.InputUtils.leerCadenaNoVacia("DNI del socio: ");
-        Socio socio = controlador.buscarSocioPorDni(dni);
+        Socio socio = controladorSocio.buscarSocioPorDni(dni);
         if (socio == null) {
             System.out.println("No existe socio con ese DNI.");
         } else {
@@ -119,7 +124,7 @@ public class VistaConsola {
 
     private void eliminarSocio() {
         int id = utils.InputUtils.leeEntero("ID del socio a eliminar: ");
-        boolean ok = controlador.eliminarSocio(id);
+        boolean ok = controladorSocio.eliminarSocio(id);
         if (ok) {
             System.out.println("✅ Socio eliminado (y desinscrito de todas las actividades).");
         } else {
@@ -147,7 +152,8 @@ public class VistaConsola {
                 case 3 -> buscarActividadPorId();
                 case 4 -> buscarActividadPorNombre();
                 case 5 -> eliminarActividad();
-                case 0 -> { }
+                case 0 -> {
+                }
                 default -> System.out.println("Opción no válida.");
             }
             System.out.println();
@@ -161,7 +167,7 @@ public class VistaConsola {
         double precio = utils.InputUtils.leeDouble("Precio mensual: ");
         int numMiembros = utils.InputUtils.leeEntero("Número máximo de socios: ");
 
-        boolean ok = controlador.registrarActividad(nombre, duracion, nivel, precio, numMiembros);
+        boolean ok = controladorActividad.registrarActividad(nombre, duracion, nivel, precio, numMiembros);
         if (ok) {
             System.out.println("✅ Actividad registrada correctamente.");
         } else {
@@ -170,7 +176,7 @@ public class VistaConsola {
     }
 
     private void listarActividades() {
-        Actividad[] actividades = controlador.listarActividades();
+        Actividad[] actividades = controladorActividad.listarActividades();
         if (actividades == null) {
             System.out.println("No hay actividades registradas.");
             return;
@@ -185,7 +191,7 @@ public class VistaConsola {
 
     private void buscarActividadPorId() {
         int id = utils.InputUtils.leeEntero("ID actividad: ");
-        Actividad a = controlador.buscarActividadPorId(id);
+        Actividad a = controladorActividad.buscarActividadPorId(id);
         if (a == null) {
             System.out.println("No existe actividad con ese ID.");
         } else {
@@ -195,7 +201,7 @@ public class VistaConsola {
 
     private void buscarActividadPorNombre() {
         String nombre = utils.InputUtils.leerCadenaNoVacia("Nombre actividad: ");
-        Actividad a = controlador.buscarActividadPorNombre(nombre);
+        Actividad a = controladorActividad.buscarActividadPorNombre(nombre);
         if (a == null) {
             System.out.println("No existe actividad con ese nombre.");
         } else {
@@ -205,7 +211,7 @@ public class VistaConsola {
 
     private void eliminarActividad() {
         int id = utils.InputUtils.leeEntero("ID de la actividad a eliminar: ");
-        boolean ok = controlador.eliminarActividad(id);
+        boolean ok = controladorActividad.eliminarActividad(id);
         if (ok) {
             System.out.println("✅ Actividad eliminada y socios actualizados.");
         } else {
@@ -231,7 +237,8 @@ public class VistaConsola {
                 case 2 -> bajaSocioDeActividad();
                 case 3 -> verActividadesDeSocio();
                 case 4 -> verSociosDeActividad();
-                case 0 -> { }
+                case 0 -> {
+                }
                 default -> System.out.println("Opción no válida.");
             }
             System.out.println();
@@ -241,7 +248,7 @@ public class VistaConsola {
     private void inscribirSocioEnActividad() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
-        boolean ok = controlador.inscribirSocioEnActividad(idSocio, idActividad);
+        boolean ok = controladorSocio.inscribirSocioEnActividad(idSocio, idActividad);
         if (ok) {
             System.out.println("✅ Inscripción realizada correctamente.");
         } else {
@@ -252,7 +259,7 @@ public class VistaConsola {
     private void bajaSocioDeActividad() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
-        boolean ok = controlador.darDeBajaSocioDeActividad(idSocio, idActividad);
+        boolean ok = controladorSocio.darDeBajaSocioDeActividad(idSocio, idActividad);
         if (ok) {
             System.out.println("✅ Baja realizada correctamente.");
         } else {
@@ -262,7 +269,7 @@ public class VistaConsola {
 
     private void verActividadesDeSocio() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
-        Actividad[] actividades = controlador.obtenerActividadesDeSocio(idSocio);
+        Actividad[] actividades = controladorSocio.obtenerActividadesDeSocio(idSocio);
         if (actividades == null) {
             System.out.println("Socio no encontrado.");
             return;
@@ -282,7 +289,7 @@ public class VistaConsola {
 
     private void verSociosDeActividad() {
         int idActividad = utils.InputUtils.leeEntero("ID actividad: ");
-        Socio[] socios = controlador.obtenerSociosDeActividad(idActividad);
+        Socio[] socios = controladorActividad.obtenerSociosDeActividad(idActividad);
         if (socios == null) {
             System.out.println("Actividad no encontrada.");
             return;
@@ -326,7 +333,8 @@ public class VistaConsola {
                 case 6 -> verEstadoMes();
                 case 7 -> listarMesesPendientes();
                 case 8 -> listarMesesPagados();
-                case 0 -> { }
+                case 0 -> {
+                }
                 default -> System.out.println("Opción no válida.");
             }
             System.out.println();
@@ -336,15 +344,15 @@ public class VistaConsola {
     private void verCuotaMes() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
-        double cuota = controlador.calcularCuotaMensualSocio(idSocio, mes);
+        double cuota = controladorSocio.calcularCuotaMensualSocio(idSocio, mes);
         System.out.println("Cuota del socio " + idSocio + " en el mes " + mes + " = " + cuota + " €");
     }
 
     private void marcarMes(boolean pagado) {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
-        boolean ok = pagado ? controlador.marcarCuotaPagada(idSocio, mes)
-                : controlador.marcarCuotaPendiente(idSocio, mes);
+        boolean ok = pagado ? controladorSocio.marcarCuotaPagada(idSocio, mes)
+                : controladorSocio.marcarCuotaPendiente(idSocio, mes);
         if (ok) {
             System.out.println("✅ Estado actualizado correctamente.");
         } else {
@@ -354,26 +362,26 @@ public class VistaConsola {
 
     private void verTotalPagado() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
-        double total = controlador.obtenerTotalPagadoAnual(idSocio);
+        double total = controladorSocio.obtenerTotalPagadoAnual(idSocio);
         System.out.println("Total pagado en el año por el socio " + idSocio + " = " + total + " €");
     }
 
     private void verTotalPendiente() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
-        double total = controlador.obtenerTotalPendienteAnual(idSocio);
+        double total = controladorSocio.obtenerTotalPendienteAnual(idSocio);
         System.out.println("Total pendiente en el año por el socio " + idSocio + " = " + total + " €");
     }
 
     private void verEstadoMes() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
         int mes = utils.InputUtils.leeEntero("Mes (1-12): ", 1, 12);
-        String estado = controlador.obtenerEstadoPagoMes(idSocio, mes);
+        String estado = controladorSocio.obtenerEstadoPagoMes(idSocio, mes);
         System.out.println("Estado del mes " + mes + ": " + estado);
     }
 
     private void listarMesesPendientes() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
-        int[] meses = controlador.obtenerMesesPendientes(idSocio);
+        int[] meses = controladorSocio.obtenerMesesPendientes(idSocio);
         if (meses == null || meses.length == 0) {
             System.out.println("No hay meses pendientes o socio no encontrado.");
         } else {
@@ -387,7 +395,7 @@ public class VistaConsola {
 
     private void listarMesesPagados() {
         int idSocio = utils.InputUtils.leeEntero("ID socio: ");
-        int[] meses = controlador.obtenerMesesPagados(idSocio);
+        int[] meses = controladorSocio.obtenerMesesPagados(idSocio);
         if (meses == null || meses.length == 0) {
             System.out.println("No hay meses pagados o socio no encontrado.");
         } else {
@@ -403,14 +411,14 @@ public class VistaConsola {
 
     private void mostrarInformes() {
         System.out.println("----- Informes -----");
-        Socio s = controlador.socioConMasActividades();
+        Socio s = controladorSocio.socioConMasActividades();
         if (s != null) {
             System.out.println("Socio con más actividades: " + s);
         } else {
             System.out.println("No hay socios para informar.");
         }
 
-        Actividad a = controlador.actividadMasPopular();
+        Actividad a = controladorActividad.actividadMasPopular();
         if (a != null) {
             System.out.println("Actividad más popular: " + a);
         } else {
