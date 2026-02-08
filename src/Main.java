@@ -7,7 +7,7 @@ import view.VistaConsola;
 public class Main {
     public static void main(String[] args) {
 
-        // Capa MODELO
+        // Capa MODELO1
         // creamos un centro deportivo (centro1) de 20 actividades y 20 socios
         CentroDeportivo centro1 = new CentroDeportivo(20, 50);
 

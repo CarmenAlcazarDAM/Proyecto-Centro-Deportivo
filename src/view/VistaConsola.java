@@ -1,6 +1,6 @@
 package view;
 
-import controller.CentroDeportivoController;
+
 import controller.ControlarActividad;
 import controller.ControlarSocio;
 import model.Actividad;
